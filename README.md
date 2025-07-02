@@ -22,6 +22,6 @@ This application implements secure user authentication and authorization using B
 
 ## 🔐 API Endpoints
 
-POST/register - Register a new user
-POST/login - Authenticate & recieve token
-GET/user - Get user info
+- POST/register - Register a new user
+- POST/login - Authenticate & recieve token
+- GET/user - Get user info
