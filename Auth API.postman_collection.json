@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "4139910b-cf57-43ca-912d-9543e0f5f9de",
+		"name": "Auth API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45030188"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Radha\",\r\n  \"email\": \"radhagmail.com\",\r\n  \"password\": \"admin@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				},
+				"description": "## Register\n\nThis allows users to register a new account by providing their username, email, and password. Upon successful registration, a confirmation message is returned.\n\n### Request\n\n- **Method**: POST\n    \n- **URL**: `http://localhost:3000/register`\n    \n\n### Response\n\n- **Status Code**: 200\n    \n- **Content-Type**: application/json"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjMyMTM1OTg3Y2I5YTJiMDY4MWE5NiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxMzg2MTQ0LCJleHAiOjE3NTEzODk3NDR9.n47WDVi9OvwmFk1wjlz4iBjZlc3iVf4XdcGW-Twt2a0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"anand@gmail.com\",\r\n  \"password\": \"admin@123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "### Login\n\nThis is used to authenticate a user by validating their credentials. Upon successful authentication, it returns a token that can be used for verifying requests that require user authentication.\n\n#### Request\n\n- **Method:** POST\n    \n- **URL:** `http://localhost:3000/login`\n    \n- **Content-Type:** application/json\n    \n\n##### Request Body Parameters:\n\n- `email` (string): The email address associated with the user account.\n    \n- `password` (string): The password corresponding to the user account.\n    \n\n#### Response\n\n- **Status Code:** 200\n    \n- **Content-Type:** application/json\n    \n\n##### Response Body:\n\n- `message` (string): A message indicating the status of the login attempt. This may be empty or contain information about the login process.\n    \n- `token` (string): A JWT token that should be used for authenticating subsequent requests."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjQxNmQ0YTQ4OGRhZmVhNTMzY2NhMiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxNDcxODQ2LCJleHAiOjE3NTE0NzU0NDZ9.UGJrFED-hNzKVdsHOziYOPL2A2uRGjyCee394XB-m80",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": "## Get User Information\n\nThis retrieves information about the currently authenticated user. It is typically used to verify the user's identity through Bearre token and to access user-specific data.\n\n### Request\n\n- **Method**: GET\n    \n- **URL**: `http://localhost:3000/user`\n    \n\n### Headers\n\n**Authorization:** Bearer your_token\n\n### Response\n\n- **Status Code:** 200\n    \n- **Content-Type:** application/json\n    \n\n#### Response Parameters\n\n- **message**: whether information retrive or not\n    \n- **user**: An object containing details about the authenticated user:\n    \n    - **id**: The unique identifier for the user (string).\n        \n    - **role**: The role assigned to the user (string).\n        \n    - **iat**: The issued at time\n        \n    - **exp**: The expiration time\n        \n- **token**: A string representing the authentication token for the user"
+			},
+			"response": []
+		}
+	]
+}
